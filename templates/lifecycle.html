@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifecycle Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .header {
+            margin: 20px 0;
+            text-align: center;
+            color: #333;
+        }
+        .section {
+            margin: 30px 0;
+        }
+        .section img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            font-size: 1.8em;
+            color: #007bff;
+            margin-top: 20px;
+        }
+        .section p {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 15px;
+        }
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Mother - Dairy Farm Dashboard</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="lifecycle">Lifecycle Management</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Dairy Farming Lifecycle Management</h1>
+    </div>
+
+    <!-- Sections -->
+    <div class="container">
+        <div class="section">
+            <img src="{{ url_for('static', filename='ecosystem.png') }}" alt="Dairy Ecosystem">
+            <h2>The Dairy Farming Lifecycle</h2>
+            <p>The lifecycle of dairy farming encompasses all stages starting from the breeding of cattle all the way to making the dairy product available to the end consumer. A large part of this life cycle is a natural process and is dependent on a number of external factors. This introduces a significant amount of variability in the lifecycle that requires proactive monitoring and management.</p>
+        </div>
+
+        <div class="section">
+            <img src="{{ url_for('static', filename='Lifecycle.png') }}" alt="Lifecycle Stages">
+            <h2>Lifecycle Stages</h2>
+            <p>This lifecycle includes various stages such as Breeding, Calf Management, Heifer Rearing, Nutrition, Milk Production, Health and Disease Management, and more. Each stage plays a critical role in ensuring the sustainability and efficiency of dairy farming operations.</p>
+        </div>
+
+        <div class="section">
+            <img src="{{ url_for('static', filename='footage.png') }}" alt="Monitoring Technology">
+            <h2>Monitoring Technology</h2>
+            <p>Advanced monitoring technology including physical sensors, video footage, and thermal sensors is used to ensure the health and productivity of the cattle throughout the lifecycle.</p>
+        </div>
+
+        <div class="section">
+            <img src="{{ url_for('static', filename='insights 1.jpg') }}" alt="Insights">
+            <img src="{{ url_for('static', filename='insights 2.png') }}" alt="Cow Monitoring">
+            <h2>Insights and Monitoring</h2>
+            <p>Insights gathered through monitoring technology help in tracking the health, feeding patterns, and behavior of the cattle, which is critical in making informed decisions for farm management.</p>
+        </div>
+
+        <div class="section">
+            <img src="{{ url_for('static', filename='ai -ml.png') }}" alt="AI & Machine Learning">
+            <h2>AI & Machine Learning</h2>
+            <p>Artificial Intelligence and Machine Learning models are employed to predict outcomes such as milk yield, disease outbreaks, and more, which helps in proactively managing the lifecycle.</p>
+        </div>
+
+        <div class="section">
+            <img src="{{ url_for('static', filename='Chart milk.png') }}" alt="Milk Production">
+            <h2>Milk Production Insights</h2>
+            <p>The culmination of the lifecycle is milk production, which is meticulously tracked and optimized using data-driven insights. The chart here shows the distribution of milk production compared to other farm outputs.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mother. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

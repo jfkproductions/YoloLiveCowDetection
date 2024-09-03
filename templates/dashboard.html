@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother - Dairy Farm Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .dashboard-header {
+            margin: 20px 0;
+            text-align: center;
+            color: #333;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #007bff;
+        }
+        .card-body {
+            font-size: 1.2em;
+        }
+        .video-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .video-container img {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .cow-count {
+            font-size: 2em;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Mother - Dairy Farm Dashboard</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('lifecycle') }}">Lifecycle Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cows</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Milk Production</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Health</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='Mother Logo.png') }}" alt="Mother Logo">
+    </div>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <h1>Welcome to Mother - Dairy Farm Live Monitoring</h1>
+    </div>
+
+    <!-- Dashboard Cards -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Cows Detected</h5>
+                        <p class="cow-count"><span id="count">0</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Milk Production</h5>
+                        <p class="card-text">500 liters/day</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Average Health Score</h5>
+                        <p class="card-text">85%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Stream -->
+    <div class="container video-container">
+        <h2>Live Video Feed</h2>
+        <img src="{{ url_for('video_feed') }}" width="800" />
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-4">
+        <p>&copy; 2024 Mother. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Cow Count Update Script -->
+    <script>
+        const cowCountElement = document.getElementById('count');
+
+        const eventSource = new EventSource("{{ url_for('cow_count_feed') }}");
+        eventSource.onmessage = function(event) {
+            cowCountElement.innerText = event.data;
+        };
+    </script>
+</body>
+</html>
